@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tính lượng phân bón đạm</title>
+<style>
+body{
+margin:0;font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#e8f5e9,#66bb6a);
+display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{background:#fff;padding:30px;border-radius:18px;max-width:650px;width:92%;
+box-shadow:0 10px 30px rgba(0,0,0,.2)}
+h1{color:#2e7d32;text-align:center}
+.formula{background:#f1f8e9;border-left:5px solid #43a047;padding:12px;border-radius:8px;text-align:center}
+label{display:block;margin-top:15px;font-weight:bold;color:#2e7d32}
+input{width:100%;padding:10px;border:1px solid #81c784;border-radius:8px}
+button{margin-top:20px;width:100%;padding:12px;background:#2e7d32;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer}
+.result{margin-top:20px;font-size:20px;font-weight:bold;color:#1b5e20;text-align:center}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>TÍNH SỐ LƯỢNG PHÂN BÓN ĐẠM</h1>
+<div class="formula">
+<b>Công thức:</b><br>
+Lượng phân đạm cần bón = (Lượng đạm nguyên chất × 100) / % Nitơ (N) trong phân
+</div>
+<label>Lượng đạm nguyên chất</label>
+<input id="pure" type="number" step="any">
+<label>Tỷ lệ %N trong phân bón</label>
+<input id="n" type="number" step="any">
+<button onclick="calc()">Tính toán</button>
+<div class="result" id="kq"></div>
+</div>
+<script>
+function calc(){
+ const pure=parseFloat(document.getElementById('pure').value);
+ const n=parseFloat(document.getElementById('n').value);
+ if(isNaN(pure)||isNaN(n)||n===0){document.getElementById('kq').textContent="Vui lòng nhập dữ liệu hợp lệ.";return;}
+ const result=(pure*100)/n;
+ document.getElementById('kq').textContent="Lượng phân đạm cần bón: "+result.toFixed(2);
+}
+</script>
+</body>
+</html>
